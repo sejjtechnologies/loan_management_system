@@ -1,0 +1,30 @@
+# Core Flask
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-WTF
+Flask-Login
+Flask-Mail
+Flask-Cors
+
+# PostgreSQL
+psycopg2-binary
+
+# HTML templating
+Jinja2
+
+# Form & data validation
+WTForms
+email-validator
+
+# Password hashing
+passlib[bcrypt]
+
+# Environment config
+python-dotenv
+
+# Optional: Image upload support
+Pillow
+
+# Optional: Date handling
+python-dateutil

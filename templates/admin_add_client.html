@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Client</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 60px;
+    }
+    .navbar {
+      height: 60px;
+      min-height: 60px;
+      max-height: 60px;
+      z-index: 1055;
+    }
+    .navbar .container-fluid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .form-section {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand fw-semibold">Add New Client</span>
+      <button class="btn btn-outline-light btn-sm" onclick="goBack()">
+        <i class="bi bi-arrow-left-circle me-1"></i> Back
+      </button>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <div class="container py-5">
+    <div class="form-section">
+      <form method="POST" action="/add_client">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control sentence-case" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Second Name</label>
+            <input type="text" name="second_name" class="form-control sentence-case" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="text" name="phone" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Occupation</label>
+            <input type="text" name="occupation" class="form-control sentence-case">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Address</label>
+            <input type="text" name="address" class="form-control sentence-case">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-4 w-100">
+          <i class="bi bi-person-plus-fill me-2"></i> Save Client
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function toSentenceCase(str) {
+      return str
+        .toLowerCase()
+        .replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    document.querySelectorAll(".sentence-case").forEach(input => {
+      input.addEventListener("input", function () {
+        const cursorPos = this.selectionStart;
+        this.value = toSentenceCase(this.value);
+        this.setSelectionRange(cursorPos, cursorPos);
+      });
+    });
+  </script>
+</body>
+</html>

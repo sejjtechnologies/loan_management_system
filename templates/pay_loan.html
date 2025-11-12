@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pay Loan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; padding-top: 60px; }
+    .navbar { height: 60px; z-index: 1055; }
+    .form-section {
+      max-width: 800px; margin: auto; padding: 30px;
+      background-color: white; border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .section-title {
+      font-size: 1.2rem; font-weight: 600; color: #0d6efd;
+      margin-bottom: 20px; border-bottom: 1px solid #dee2e6; padding-bottom: 5px;
+    }
+    .readonly { background-color: #e9ecef; }
+    .toast-container { position: fixed; top: 70px; right: 20px; z-index: 1080; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand fw-semibold">Pay Loan</span>
+      <button class="btn btn-outline-light btn-sm" onclick="goBack()">
+        <i class="bi bi-arrow-left-circle me-1"></i> Back
+      </button>
+    </div>
+  </nav>
+
+  <!-- Toast -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="toast-container">
+      {% for category, message in messages %}
+      <div class="toast align-items-center text-bg-success border-0 show" role="alert">
+        <div class="d-flex">
+          <div class="toast-body">{{ message }}</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Loan Payment Section -->
+  <div class="container py-5">
+    <form method="POST" action="/pay_loan/{{ loan.id }}">
+      <div class="form-section mb-4">
+        <div class="section-title">Loan Details</div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Client Name</label>
+            <input type="text" class="form-control readonly" value="{{ client.first_name }} {{ client.second_name }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control readonly" value="{{ client.phone }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Start Date</label>
+            <input type="text" class="form-control readonly" value="{{ loan.start_date.strftime('%Y-%m-%d') }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Due Date</label>
+            <input type="text" class="form-control readonly" value="{{ loan.due_date.strftime('%Y-%m-%d') }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Remaining Days</label>
+            <input type="text" class="form-control readonly" value="{{ remaining_days }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Daily Installment (UGX)</label>
+            <input type="text" class="form-control readonly" value="{{ loan.daily_payment }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Total Paid (UGX)</label>
+            <input type="text" class="form-control readonly" value="{{ total_paid }}" readonly>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Balance Remaining (UGX)</label>
+            <input type="text" class="form-control readonly" value="{{ balance }}" readonly>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section mb-4">
+        <div class="section-title">Make a Payment</div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Amount to Pay (UGX)</label>
+            <input type="number" name="amount" class="form-control" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success px-5 py-2">
+          <i class="bi bi-cash-stack me-2"></i> Submit Payment
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

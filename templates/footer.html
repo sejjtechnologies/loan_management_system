@@ -1,0 +1,101 @@
+<footer class="bg-purple text-white fixed-bottom" style="height: 120px; font-size: 0.85rem;">
+    <style>
+        .bg-purple {
+            background-color: #6a1b9a;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+        .footer-left, .footer-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .social-icons a {
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+        .footer-links a {
+            margin-right: 8px;
+            font-size: 0.85rem;
+        }
+        .footer-contact p {
+            margin: 0;
+            font-size: 0.8rem;
+        }
+        .footer-bottom {
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        @media (max-width: 576px) {
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 5px;
+            }
+            .footer-left, .footer-right {
+                align-items: center;
+            }
+            .social-icons a {
+                font-size: 1.1rem;
+                margin: 4px;
+            }
+            .footer-links a {
+                display: inline-block;
+                margin: 2px 6px;
+                font-size: 0.9rem;
+            }
+            .footer-contact p {
+                font-size: 0.85rem;
+            }
+            .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+    <div class="container footer-inner">
+        <!-- Left Side -->
+        <div class="footer-left">
+            <div class="social-icons mb-1">
+                <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="bi bi-tiktok"></i></a>
+                <a href="https://snapchat.com" target="_blank"><i class="bi bi-snapchat"></i></a>
+                <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://telegram.org" target="_blank"><i class="bi bi-telegram"></i></a>
+            </div>
+            <div class="footer-links mb-1">
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/terms">Terms</a>
+                <a href="/privacy">Privacy</a>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="footer-right text-end">
+            <div class="footer-contact">
+                <p>📧 <a href="mailto:support@moneylend.com">support@moneylend.com</a></p>
+                <p>📞 +256 768936691</p>
+                <p>📍 Kawempe, Kampala, Uganda</p>
+                <p>🕒 Mon–Sat, 8:00 AM – 6:00 PM</p>
+            </div>
+            <div class="footer-bottom">
+                <small>&copy; 2025 MoneyLend. All rights reserved.</small>
+            </div>
+        </div>
+    </div>
+</footer>
